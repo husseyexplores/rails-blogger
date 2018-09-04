@@ -1,0 +1,23 @@
+<div class="container">
+  <h1 class="h1 heading--primary">Create a New Article</h1>
+  <div class="form-wrapper">
+    <%= form_for(@article) do |f| %>
+      <ul>
+        <% @article.errors.full_messages.each do |err| %>
+          <li><%= err %></li>
+        <% end %>
+      </ul>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </div>
+      <div class="form-group">
+        <%= f.label :body %>
+        <%= f.text_area :body %>
+      </div>
+      <div class="form-group form-submit">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>
