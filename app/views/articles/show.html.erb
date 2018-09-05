@@ -2,7 +2,8 @@
   <div class="article">
     <h1 class="article__heading"><%= @article.title %></h1>
     <p class="article__body"><%= @article.body %></p>
-    <%= link_to "delete", articles_path(@article), method: :delete %>
+    <%= link_to "edit", edit_article_path(@article) %>
+    <%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Are you sure you want to delete this article?" } %>
   </div>
 </div>
 
