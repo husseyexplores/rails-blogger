@@ -2,14 +2,21 @@
   <div class="article">
     <div class="article__header">
       <h1 class="article__heading h1 heading--primary"><%= @article.title %></h1>
-      <div class="article__tags">
-        <% @article.tags.each do |tag| %>
-          <%= link_to tag.name, tag_path(tag) %>
-        <% end %>
-      </div>
+      <% if @article.tags.exists? %>  
+        <div class="article__tags">
+          <% @article.tags.each do |tag| %>
+            <%= link_to tag.name, tag_path(tag) %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <div class="article__body">
-      <p class="article__body"><%= @article.body %></p>
+      <% if @article.image.exists? %>
+        <div class="article__image">
+          <%= image_tag @article.image.url %>
+        </div>
+      <% end %>
+      <p class="article__content"><%= @article.body %></p>
     </div>
     <div class="article__admin-links">
       <div class="article__edit-link"><%= link_to "edit", edit_article_path(@article) %></div>
