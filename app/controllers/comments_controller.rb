@@ -9,4 +9,13 @@ class CommentsController < ApplicationController
 
     redirect_to article_path(@comment.article)
   end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+
+    flash.notice = "'#{@comment.id}' Deleted!"
+
+    redirect_back fallback_location: articles_path
+  end
 end

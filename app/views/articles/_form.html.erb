@@ -9,6 +9,10 @@
     <%= f.text_field :title, placeholder: "Title"  %>
   </div>
   <div class="form-group">
+    <%= f.label :tag_list %>
+    <%= f.text_field :tag_list, placeholder: "Comma separated tags" %>
+  </div>
+  <div class="form-group">
     <%= f.label :body %>
     <%= f.text_area :body, placeholder: "Content"  %>
   </div>
