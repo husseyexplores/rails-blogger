@@ -18,10 +18,16 @@
       <% end %>
       <p class="article__content"><%= @article.body %></p>
     </div>
+    <% if logged_in? %>
     <div class="article__admin-links">
-      <div class="article__edit-link"><%= link_to "edit", edit_article_path(@article) %></div>
-      <div class="article__delete-link"><%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Are you sure you want to delete this article?" } %></div>
+      <div class="article__edit-link">
+        <%= link_to "edit", edit_article_path(@article) %>
+      </div>
+      <div class="article__delete-link">
+        <%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Are you sure you want to delete this article?" } %>
+      </div>
     </div>
+    <% end %>
   </div>
 
   <div class="back-to-aricles">
