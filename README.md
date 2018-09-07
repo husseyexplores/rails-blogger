@@ -1,24 +1,15 @@
-# README
+# Article / Blog App Using Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[View it Live here!](https://husseyblogapp.herokuapp.com/)
 
-Things you may want to cover:
+Please give ~10 to load on the first request.
+(Heroku) Server will need to wake up.
 
-* Ruby version
+To see all the features, login using these credentials:
+Email: admin
+password: 12346
 
-* System dependencies
+Built with:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Ruby version - 2.5
+- Rails version - 5.2.1
