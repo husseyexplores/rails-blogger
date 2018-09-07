@@ -1,3 +1,217 @@
 // Place all the styles related to the articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/*=================================
+======== Article Show Page ========
+=================================*/
+.back-to-articles {
+  background-color: var(--color-grey-light-3);
+  margin: 1rem auto;
+  text-align: center;
+
+  &>a {
+    display: inline-block;
+    padding: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-dark-blue-1);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    letter-spacing: .5px;
+    position: relative;
+
+    &::before {
+      content: " ";
+      position: absolute;
+      top: 53%;
+      transform: translateY(-50%);
+      left: .5rem;
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg fill='%23030a11' xmlns='http://www.w3.org/2000/svg' width='20' viewBox='0 0 400 400'%3E%3Cpath d='M165.304 142.468L277.517 30.267c1.902-1.903 2.847-4.093 2.847-6.567 0-2.475-.951-4.665-2.847-6.567L263.239 2.857C261.337.955 259.146 0 256.676 0c-2.478 0-4.665.955-6.571 2.857L117.057 135.9c-1.903 1.903-2.853 4.093-2.853 6.567 0 2.475.95 4.664 2.853 6.567l133.048 133.043c1.903 1.906 4.086 2.851 6.564 2.851 2.478 0 4.66-.947 6.563-2.851l14.277-14.267c1.902-1.903 2.851-4.094 2.851-6.57 0-2.472-.948-4.661-2.851-6.564L165.304 142.468z'/%3E%3Cpath d='M55.668 142.468L167.87 30.267c1.903-1.903 2.851-4.093 2.851-6.567 0-2.475-.947-4.665-2.851-6.567L153.6 2.857C151.697.955 149.507 0 147.036 0c-2.478 0-4.668.955-6.57 2.857L7.417 135.9c-1.903 1.903-2.853 4.093-2.853 6.567 0 2.475.95 4.664 2.853 6.567l133.048 133.043c1.902 1.906 4.09 2.851 6.57 2.851 2.471 0 4.661-.947 6.563-2.851l14.271-14.267c1.903-1.903 2.851-4.094 2.851-6.57 0-2.472-.947-4.661-2.851-6.564L55.668 142.468z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}
+
+.article {
+  max-width: 70rem;
+  margin: 3rem auto;
+
+  &__tags {
+    margin: 3rem auto;
+
+    &>a {
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      font-size: 1.1rem;
+      letter-spacing: .5px;
+      font-family: 'Roboto', sans-serif;
+      color: var(--color-grey-light-1);
+      background-color: var(--color-blue-grey-1);
+      border-radius: 100px;
+    }
+  }
+
+  &__image {
+    margin-bottom: 2.2rem;
+
+    img {
+      width: 100%;
+      box-shadow: 0px .5rem 1.5rem rgba(0, 0, 0, 0.3);
+      transition: .2s all ease;
+
+      &:hover {
+        transform: scale(1.01);
+      }
+    }
+  }
+
+  &__body {
+    margin: 1rem auto;
+    font-size: 2.1rem;
+    line-height: 1.6;
+    color: var(--color-grey-dark-0);
+    border-bottom: var(--line-dark-1);
+    padding: .5rem 0 4rem 0;
+  }
+
+  &__admin-links {
+    margin-top: 3.5rem;
+    text-align: center;
+
+    &>a {
+      display: inline-block;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: .5px;
+      padding: .8rem 2rem;
+      background-color: var(--color-dark-blue-1);
+      color: var(--color-grey-light-1);
+      transition: all .2s ease;
+      transform: translateY(0);
+
+      &:hover,
+      &:active {
+        background-color: var(--color-dark-blue-5);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+      }
+
+      &:active {
+        transform: translateY(1px) scale(0.99);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      }
+
+      &:not(:last-child) {
+        margin-right: .5rem;
+      }
+    }
+
+    &>.danger {
+      background-color: var(--color-red-light-1);
+
+      &:hover,
+      &:active {
+        background-color: var(--color-red-light-2);
+      }
+    }
+  }
+}
+
+/*=================================
+======= Article Index Page ========
+=================================*/
+.articles {
+  margin-top: 4rem;
+  display: grid;
+  height: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  //grid-template-rows: 1fr 1fr 1fr;
+  gap: 10px 10px;
+  grid-auto-columns: 30px;
+  grid-auto-flow: row;
+  justify-items: center;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__list-item {
+    list-style: none;
+
+    figure {
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    &__img-container {
+      overflow: hidden;
+
+      a {
+        line-height: 0;
+        display: block;
+      }
+
+      img,
+      svg {
+        transition: .2s all ease;
+        width: 100%;
+      }
+    }
+
+    &:hover &__img-container img,
+    &:hover &__img-container svg,
+      {
+      transform: scale(1.1);
+      opacity: .7;
+    }
+
+    figcaption {
+      padding: 3rem 2rem;
+      bottom: 0px;
+      //position: absolute;
+      background: var(--color-dark-blue-1);
+      width: 100%;
+      height: 100%;
+      transition: all .2s ease;
+      //transform: translateY(6.7rem);
+    }
+
+    &:hover figcaption {
+      transform: translateY(0);
+    }
+
+    &__time {
+      color: var(--color-grey-dark-3);
+      font-family: 'Roboto', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      font-size: 1.2rem;
+    }
+
+    &__title {
+      font-weight: 500;
+      margin: 1rem 0;
+
+      a {
+        text-decoration: none;
+        text-transform: capitalize;
+        color: var(--color-grey-light-1);
+        font-weight: 500;
+      }
+    }
+
+    &__excerpt {
+      color: var(--color-grey-dark-3);
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.4rem;
+    }
+  }
+}

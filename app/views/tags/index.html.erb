@@ -1,13 +1,10 @@
-<div class="container">
-  <h1 class="heading--primary">Browse articles by tags</h1>
+<h1 class="heading--primary">Browse articles by tags</h1>
 
-  <ul id="tags" class="tags">
-    <% @tags.each do |tag| %>
-      <li class="articles__list-item"> <%= link_to tag.name, tag_path(tag), class: 
-      "tag__list-link", id: "tag_#{tag.id}" %>
-      <span class="tag__delete-link"><%= link_to "delete", article_path(tag), method: :delete, data: {confirm: "Are you sure you want to delete this tag?" } %></span>
-      </li>
-    <% end %>
-  </ul>
-
-</div>
+<ul id="tags" class="tags">
+  <% @tags.each do |tag| %>
+    <li class="articles__list-item"> <%= link_to tag.name, tag_path(tag), class: 
+    "tag__list-link", id: "tag_#{tag.id}" %>
+    <span class="tag__delete-link"><%= link_to "delete", article_path(tag), method: :delete, data: {confirm: "Are you sure you want to delete this tag?" } %></span>
+    </li>
+  <% end %>
+</ul>

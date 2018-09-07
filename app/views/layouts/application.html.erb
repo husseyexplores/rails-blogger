@@ -1,30 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blogger</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', 'https://fonts.googleapis.com/css?family=Fjalla+One', 'https://fonts.googleapis.com/css?family=Average', 'https://fonts.googleapis.com/css?family=Roboto:400,500', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="flash">
-      <%= flash.notice %>
-    </p>
-    
-    <% if logged_in? %>
-      <div class="is-logged-in">
-        <%= "Logged in as #{current_user.email}" %>
-        <%= link_to "(logout)", logout_path %>
-      </div>
-    <% else %>
-      <div class="is-logged-in">
-        <%= link_to "(login)", login_path %>
-      </div>
-    <% end %>
-
-    <%= yield %>
+  
+    <div class="container">
+      <%= render partial: 'header/navigation' %>
+      <main class="main">
+        <%= flash_toastr %>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>

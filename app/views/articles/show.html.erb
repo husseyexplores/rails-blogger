@@ -1,45 +1,46 @@
-<div class="container">
-  <div class="article">
-    <div class="article__header">
-      <h1 class="article__heading h1 heading--primary"><%= @article.title %></h1>
-      <% if @article.tags.exists? %>  
-        <div class="article__tags">
-          <% @article.tags.each do |tag| %>
-            <%= link_to tag.name, tag_path(tag) %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-    <div class="article__body">
-      <% if @article.image.exists? %>
-        <div class="article__image">
-          <%= image_tag @article.image.url %>
-        </div>
-      <% end %>
-      <p class="article__content"><%= @article.body %></p>
-    </div>
-    <% if logged_in? %>
-    <div class="article__admin-links">
-      <div class="article__edit-link">
-        <%= link_to "edit", edit_article_path(@article) %>
+<div class="article">
+  <div class="article__header">
+    <h1 class="article__heading h1 heading--primary"><%= @article.title %></h1>
+    <% if @article.tags.exists? %>  
+      <div class="article__tags">
+        <% @article.tags.each do |tag| %>
+          <%= link_to tag.name, tag_path(tag) %>
+        <% end %>
       </div>
-      <div class="article__delete-link">
-        <%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Are you sure you want to delete this article?" } %>
-      </div>
-    </div>
     <% end %>
   </div>
-
-  <div class="back-to-aricles">
-    <%= link_to "<< Back to Articles List", articles_path %>
+  <div class="article__body">
+    <% if @article.image.exists? %>
+      <div class="article__image">
+        <%= image_tag @article.image.url %>
+      </div>
+    <% end %>
+    <p class="article__content"><%= @article.body %></p>
   </div>
-
-  <div class="comment comments-wrapper">
-    <h2 class="h2 heading--secondary">Comments (<%= @article.comments.size %>)</h2>
-    <%= render partial: 'articles/comment', collection: @article.comments %>
+  <% if logged_in? %>
+  <div class="article__admin-links">
+      <%= link_to "edit", edit_article_path(@article) %>
+      <%= link_to "delete", article_path(@article),  class: 'danger', method: :delete, data: {confirm: "Are you sure you want to delete this article?"} %>
   </div>
+  <% end %>
+</div>
+
+<div class="back-to-articles">
+  <%= link_to "Back to Articles List", articles_path %>
+</div>
+
+<div class="comment comments-wrapper">
+  <h2 class="h2 heading--secondary">
+    <span class="comment__count"><%= @article.comments.size %></span>
+    <span class="comment__heading-text">
+    <% if @article.comments.size == 1 %> Comment <% else %> Comments <% end %>
+    </span>
+  </h2>
+  <%= render partial: 'articles/comment', collection: @article.comments %>
+  
   <div class="comment-form">
   <h3 class="comment-form__heading h3">Post a Comment</h3>
     <%= render partial: 'comments/form' %>
   </div>
 </div>
+

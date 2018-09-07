@@ -1,20 +1,20 @@
-<div class="comment-form__body">
-  <%= form_for [ @article, @comment ] do |f| %>
+<div class="form-wrapper">
+  <%= form_for [ @article, @comment ], :html => {:class => 'form'} do |f| %>
   <ul>
     <% @article.errors.full_messages.each do |err| %>
       <li><%= err %></li>
     <% end %>
   </ul>
-  <div class="form-group">
-    <%= f.label :author_name, "Your Name" %>
-    <%= f.text_field :author_name, placeholder: "Your Name" %>
+  <div class="field-group">
+    <%= f.text_field :author_name, placeholder: "Your Name", class: "form__input", required: :true, pattern: '[\sA-Za-z]{3,}' %>
+    <%= f.label :author_name, "Your Name", class: "form__label"%>
   </div>
-  <div class="form-group">
-    <%= f.label :body, "Comment" %>
-    <%= f.text_area :body, placeholder: "Write Your Comment Here"  %>
+  <div class="field-group">
+    <%= f.text_area :body, placeholder: "Your Comment", class: "form__input", required: :true,  minlength: '3', rows: 3 %>
+    <%= f.label :body, "Your Comment", class: "form__label" %>
   </div>
-  <div class="form-group form-submit">
-    <%= f.submit "submit" %>
+  <div class="field-group form-submit">
+    <%= f.submit "submit", class: "form__submit" %>
   </div>
   <% end %>
 

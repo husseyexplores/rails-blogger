@@ -1,0 +1,19 @@
+<header class="header">
+  <div class="header__logo"></div>
+  <nav class="nav main-nav">
+  <ul>
+    <li class="nav__list-item"><%= link_to "home", root_path %></li>
+    <% if logged_in? %>
+    <li class="nav__list-item"><%= link_to "Create a New Article", new_article_path, class: "new_article" %></li>
+    <li class="nav__list-item logout">
+      <%= link_to "logout", logout_path %>
+      <span class="logged-in-as"><%= "Logged in as #{current_user.email}" %></span>
+    </li>
+    <% else %>
+    <li class="nav__list-item login">
+      <%= link_to "login", login_path %>
+    </li>
+    <% end %>
+  </ul>
+  </nav>
+</header>

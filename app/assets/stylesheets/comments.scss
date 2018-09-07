@@ -1,3 +1,67 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.comment {
+  max-width: 70rem;
+  margin: 0 auto 3rem auto;
+
+  &-form {
+    margin-top: 3rem;
+  }
+
+  &__item {
+    margin-top: 2rem;
+    padding: 3rem;
+    background-color: var(--color-grey-light-2);
+    border: 1px solid var(--color-grey-light-3);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.8rem;
+  }
+
+  &__author {
+    padding-left: 1.5rem;
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: .5px;
+  }
+
+  &__author-title {
+    font-weight: 500;
+  }
+
+  &__date {
+    font-size: 1.3rem;
+  }
+
+  &__avatar {
+    svg {
+      width: 50px;
+    }
+  }
+
+  &__delete-link {
+    margin-top: 3rem;
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: .5px;
+      color: var(--color-red-light-1);
+      transition: all .2s ease;
+
+      &:hover,
+      &:active {
+        color: var(--color-red-light-2);
+      }
+    }
+  }
+}
