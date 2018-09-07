@@ -1,12 +1,17 @@
 # Article / Blog App Using Rails
 
+**Article images currently doesn't work on Heroku.**
+
 [View it Live here!](https://husseyblogapp.herokuapp.com/)
 
 Please give ~10 to load on the first request.
+
 (Heroku) Server will need to wake up.
 
 To see all the features, login using these credentials:
+
 Email: admin
+
 password: 12346
 
 Built with:
